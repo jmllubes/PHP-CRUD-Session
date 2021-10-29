@@ -27,7 +27,7 @@
 
     </form>
     <?php
-    session_start();
+    @session_start();
     if (isset($_REQUEST["registrar"])) {
         $_SESSION["codi"][] = $_REQUEST["codi"];
         $_SESSION["nom"][] = $_REQUEST["nom"];
@@ -71,8 +71,7 @@ if(isset($_SESSION["foto"])){
 </form><?php
     if(isset($_REQUEST["unset"])){
       unset($_SESSION['codi']);
-      unset($_SESSION['origen']);
-      unset($_SESSION['desti']); 
+      unset($_SESSION['nom']);
       unset($_SESSION['preu']);
       unset($_SESSION['foto']);
       header("Location:index.php");

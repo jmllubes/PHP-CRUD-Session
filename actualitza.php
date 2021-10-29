@@ -24,19 +24,18 @@
         <label for="">Preu</label>
         <input class="form-control" type="number" name="preu" id="" <?php echo "value=".$_SESSION['preu'][$j];?> required><br>
         <Label>Foto producte</Label>
-        <input class="form-control" type="file" name="foto" id="" <?php echo "value=".$_SESSION['foto'][$j];?> required><br>
-        <input class="btn btn-primary" type="submit" name="actualitza" value="Actualitzar">
+        <input class="form-control" type="file" name="foto" id="" required><br>
+        <input class="btn btn-primary" type="submit" name="actualitzar" value="Actualitzar">
 
     </form>
     <?php 
-    if(isset($_REQUEST["actualitza"])){
+    if(isset($_REQUEST["actualitzar"])){
         $_SESSION["codi"][$j] = $_REQUEST["codi"];
         $_SESSION["nom"][$j] = $_REQUEST["nom"];
         $_SESSION["preu"][$j] = $_REQUEST["preu"];
         copy($_FILES['foto']['tmp_name'], "img/" . $_FILES['foto']['name']);
         $_SESSION["foto"][$j] = "img/" . $_FILES['foto']['name'];
-        header("Location:index.php");
-
+        var_dump($_SESSION["codi"]);
 
     }
 
