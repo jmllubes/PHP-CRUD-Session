@@ -32,8 +32,13 @@
         $_SESSION["codi"][] = $_REQUEST["codi"];
         $_SESSION["nom"][] = $_REQUEST["nom"];
         $_SESSION["preu"][] = $_REQUEST["preu"];
-        copy($_FILES['foto']['tmp_name'], "img/" . $_FILES['foto']['name']);
-        $_SESSION["foto"][] = "img/" . $_FILES['foto']['name'];
+
+        $today = date("YmdHis");
+        $extensio = substr($_FILES['foto']['name'], strpos($_FILES['foto']['name'],"."));
+        $nom = substr($_FILES['foto']['name'],0, strpos($_FILES['foto']['name'],"."));
+        $nomcomplet =  $nom . $today . $extensio;
+        copy($_FILES['foto']['tmp_name'], "img/" . $nomcomplet);
+        $_SESSION["foto"][] = "img/" . $nomcomplet;
     }
     ?>
 <h2 class="text-center pt-5 pb-3">Mostrar Productes</h2>

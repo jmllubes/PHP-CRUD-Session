@@ -13,7 +13,7 @@
 
 <body>
     <?php @session_start();
-    if(isset($_REQUEST["actualitza"])){
+    if(isset($_REQUEST["actualitza"])){ //variable que ve de la url
     $j = $_REQUEST['actualitza'];
     $_SESSION["index"]= $j; 
     
@@ -33,7 +33,7 @@
 
     </form>
     <?php 
-    if(isset($_REQUEST["actualitzar"])){
+    if(isset($_REQUEST["actualitzar"])){//la del boto del formulari
         $j = $_SESSION["index"];
         $_SESSION["codi"][$j] = $_REQUEST["codi"];
         $_SESSION["nom"][$j] = $_REQUEST["nom"];
