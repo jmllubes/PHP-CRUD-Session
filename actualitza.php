@@ -13,7 +13,11 @@
 
 <body>
     <?php @session_start();
-    $j = $_REQUEST['actualitza']; ?>
+    if(isset($_REQUEST["actualitza"])){
+    $j = $_REQUEST['actualitza'];
+    $_SESSION["index"]= $j; 
+    
+    }?>
     <h2 class="text-center pt-5 pb-3">Modificar Productes</h2>
 
     <form class="container mt-5 mb-5" action="actualitza.php" method="post" enctype="multipart/form-data">
@@ -30,13 +34,13 @@
     </form>
     <?php 
     if(isset($_REQUEST["actualitzar"])){
+        $j = $_SESSION["index"];
         $_SESSION["codi"][$j] = $_REQUEST["codi"];
         $_SESSION["nom"][$j] = $_REQUEST["nom"];
         $_SESSION["preu"][$j] = $_REQUEST["preu"];
         copy($_FILES['foto']['tmp_name'], "img/" . $_FILES['foto']['name']);
         $_SESSION["foto"][$j] = "img/" . $_FILES['foto']['name'];
-        var_dump($_SESSION["codi"]);
-
+        header("Location:index.php");
     }
 
 ?>
